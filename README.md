@@ -8,4 +8,4 @@
 - Настройки Hibernate в файле application.properties
 
 ### 2 ER-диаграмма (L4)
-![CC0](https://github.com/serd1986//mediasoft/blob/L4/screenshots/Image_export_worker3.png)
+![CC0](screenshots/Image_export_worker3.png)
