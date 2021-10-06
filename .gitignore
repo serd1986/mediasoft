@@ -92,6 +92,9 @@ fabric.properties
 # https://plugins.jetbrains.com/plugin/12206-codestream
 .idea/codestream.xml
 
+### Properties ###
+application.properties
+
 ### Java ###
 # Compiled class file
 *.class
