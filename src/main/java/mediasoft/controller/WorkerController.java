@@ -41,7 +41,7 @@ public class WorkerController {
         return workerDto;
     }
 
-    @PutMapping("/v1/test/{id}/edit")
+    @PutMapping("/{id}")
     public WorkerDto editWorker(@RequestBody WorkerEditDto workerEditDto,
                                 @PathVariable("id") Integer workerId) {
 
