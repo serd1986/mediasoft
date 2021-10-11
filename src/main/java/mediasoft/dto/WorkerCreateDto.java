@@ -9,15 +9,12 @@ public class WorkerCreateDto {
     private final String fam;
     private final String im;
     private final String otch;
-    private final String text;
 
     public WorkerCreateDto(@JsonProperty("fam") String fam,
                            @JsonProperty("im") String im,
-                           @JsonProperty("otch") String otch,
-                           @JsonProperty("text") String text) {
+                           @JsonProperty("otch") String otch) {
         this.fam = fam;
         this.im = im;
         this.otch = otch;
-        this.text = text;
     }
 }

@@ -10,17 +10,14 @@ public class WorkerDto {
     private final String fam;
     private final String im;
     private final String otch;
-    private final String text;
 
     public WorkerDto(Integer id,
                     String fam,
                     String im,
-                    String otch,
-                    String text) {
+                    String otch) {
         this.id = id;
         this.fam = fam;
         this.im = im;
         this.otch = otch;
-        this.text = text;
     }
 }
