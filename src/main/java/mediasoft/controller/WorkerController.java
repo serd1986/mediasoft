@@ -24,6 +24,7 @@ public class WorkerController {
         this.workerService = workerService;
     }
 
+
     @GetMapping
     public List<WorkerDto> getAllWorkers() {
         return workerService.getAllWorkerDtos();

@@ -1,5 +1,6 @@
 package mediasoft.service.impl;
 
+import mediasoft.annotation.Loggable;
 import mediasoft.dto.WorkerCreateDto;
 import mediasoft.dto.WorkerDto;
 import mediasoft.dto.WorkerEditDto;
@@ -27,12 +28,14 @@ public class JpaWorkerService implements WorkerService {
         this.workerFactory = WorkerFactory;
     }
 
+
     @Override
     public List<WorkerDto> getAllWorkerDtos() {
         List<Worker> Workers = workerRepository.findAll();
         return workerMapper.mapWorkerToWorkerDto(Workers);
     }
 
+    @Loggable
     @Override
     public WorkerDto createWorkerDto(WorkerCreateDto workerCreateDto) {
         Worker Worker = workerFactory.build(
@@ -47,6 +50,7 @@ public class JpaWorkerService implements WorkerService {
         return workerMapper.mapWorkerToWorkerDto(Worker);
     }
 
+    @Loggable
     @Override
     public WorkerDto editWorkerDto(Integer WorkerId, WorkerEditDto WorkerEditDto) {
         Worker worker = workerRepository.findById(WorkerId).orElseThrow();
