@@ -1,6 +1,6 @@
 package mediasoft.aspect;
 
-import mediasoft.service.context.UserContext;
+import mediasoft.service.context.WorkerContext;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.core.annotation.Order;
@@ -18,10 +18,10 @@ public class UserContextAspect {
 
     private static final String HEADER_NAME_EMAIL = "email";
 
-    private final UserContext userContext;
+    private final WorkerContext workerContext;
 
-    public UserContextAspect(UserContext userContext) {
-        this.userContext = userContext;
+    public UserContextAspect(WorkerContext workerContext) {
+        this.workerContext = workerContext;
     }
 
     @Before("execution(public * *(..)) " +
@@ -32,6 +32,6 @@ public class UserContextAspect {
 
         String email = request.getHeader(HEADER_NAME_EMAIL);
 
-        userContext.setEmail(email);
+        workerContext.setEmail(email);
     }
 }

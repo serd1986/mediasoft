@@ -2,7 +2,7 @@ package mediasoft.aspect;
 
 import lombok.extern.slf4j.Slf4j;
 import mediasoft.annotation.Loggable;
-import mediasoft.service.context.UserContext;
+import mediasoft.service.context.WorkerContext;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -10,7 +10,6 @@ import org.aspectj.lang.annotation.Before;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 @Aspect
@@ -19,12 +18,11 @@ import java.util.Arrays;
 @Order(2)
 public class LoggingAspect {
 
-    private final UserContext userContext;
+    private final WorkerContext userContext;
 
-    public LoggingAspect(UserContext userContext) {
+    public LoggingAspect(WorkerContext userContext) {
         this.userContext = userContext;
     }
-
 
     @After("@annotation(loggable)")
     public void loggable(JoinPoint joinPoint, Loggable loggable) {

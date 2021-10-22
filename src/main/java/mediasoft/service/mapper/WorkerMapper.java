@@ -16,8 +16,8 @@ public class WorkerMapper {
                 model.getId(),
                 model.getFam(),
                 model.getIm(),
-                model.getOtch()
-        );
+                model.getOtch(),
+                mail);
     }
 
     public List<WorkerDto> mapWorkerToWorkerDto(Collection<Worker> model) {

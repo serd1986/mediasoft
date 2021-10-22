@@ -24,6 +24,7 @@ public class Worker {
     private String fam;
     private String im;
     private String otch;
+    private String email;
 
     @OneToMany(mappedBy = "worker", fetch = FetchType.EAGER)
     private Set<Position> positions;

@@ -1,6 +1,6 @@
 package mediasoft.service.context;
 
-public interface UserContext {
+public interface WorkerContext {
 
     void setEmail(String email);
 
