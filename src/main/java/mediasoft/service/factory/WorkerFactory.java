@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
     @Component
     public class WorkerFactory {
 
-        public Worker build(String fam, String im, String otch) {
-            return new Worker(fam, im, otch);
+        public Worker build(String fam, String im, String otch, String email) {
+            return new Worker(fam, im, otch, email);
         }
     }

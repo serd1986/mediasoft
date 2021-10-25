@@ -1,12 +1,15 @@
 package mediasoft.service.impl;
 
 import mediasoft.annotation.Loggable;
-import mediasoft.dto.WorkerCreateDto;
-import mediasoft.dto.WorkerDto;
-import mediasoft.dto.WorkerEditDto;
+import mediasoft.dto.worker.WorkerCreateDto;
+import mediasoft.dto.worker.WorkerDto;
+import mediasoft.dto.worker.WorkerEditDto;
+import mediasoft.dto.worker.WorkerWithRolesDto;
+import mediasoft.dto.worker.filter.WorkerFilterDto;
 import mediasoft.entity.Worker;
 import mediasoft.exception.ConflictException;
 import mediasoft.repository.WorkerRepository;
+import mediasoft.repository.specification.WorkerSpecification;
 import mediasoft.service.WorkerService;
 import mediasoft.service.factory.WorkerFactory;
 import mediasoft.service.mapper.WorkerMapper;
@@ -15,6 +18,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -54,7 +58,8 @@ public class WorkerServiceImpl implements WorkerService {
         Worker Worker = workerFactory.build(
                 workerCreateDto.getFam(),
                 workerCreateDto.getIm(),
-                workerCreateDto.getOtch()
+                workerCreateDto.getOtch(),
+                workerCreateDto.getEmail()
 
         );
 
@@ -73,5 +78,17 @@ public class WorkerServiceImpl implements WorkerService {
         workerRepository.saveAndFlush(worker);
 
         return workerMapper.mapWorkerToWorkerDto(worker);
+    }
+
+    @Override
+    public List<WorkerWithRolesDto> getWorkers() {
+        List<Worker> workers = workerRepository.findAllWithRoles();
+        return workerMapper.mapWorkerToWorkerWithRolesDto(workers);
+    }
+
+    @Override
+    public List<WorkerWithRolesDto> getWorkers(Collection<WorkerFilterDto> filters) {
+        List<Worker> workers = workerRepository.findAll(WorkerSpecification.findWorkers(filters));
+        return workerMapper.mapWorkerToWorkerWithRolesDto(workers);
     }
 }

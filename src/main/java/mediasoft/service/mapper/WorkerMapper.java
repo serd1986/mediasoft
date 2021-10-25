@@ -1,6 +1,8 @@
 package mediasoft.service.mapper;
 
-import mediasoft.dto.WorkerDto;
+import mediasoft.dto.worker.WorkerDto;
+import mediasoft.dto.worker.WorkerWithRolesDto;
+import mediasoft.entity.Role;
 import mediasoft.entity.Worker;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +19,27 @@ public class WorkerMapper {
                 model.getFam(),
                 model.getIm(),
                 model.getOtch(),
-                mail);
+                model.getEmail());
     }
 
     public List<WorkerDto> mapWorkerToWorkerDto(Collection<Worker> model) {
         return model.stream()
                 .map(this::mapWorkerToWorkerDto)
+                .collect(Collectors.toList());
+    }
+
+    public WorkerWithRolesDto mapWorkerToWorkerWithRolesDto(Worker worker) {
+        return new WorkerWithRolesDto(
+                worker.getId(),
+                worker.getEmail(),
+                worker.getRoles().stream().map(Role::getCode).collect(Collectors.toList())
+        );
+    }
+
+    public List<WorkerWithRolesDto> mapWorkerToWorkerWithRolesDto(Collection<Worker> workers) {
+        return workers.stream()
+                .map(this::mapWorkerToWorkerWithRolesDto)
+                .distinct()
                 .collect(Collectors.toList());
     }
 }

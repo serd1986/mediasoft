@@ -1,0 +1,1 @@
+create unique index worker_email_uniq_idx on working.worker (email);

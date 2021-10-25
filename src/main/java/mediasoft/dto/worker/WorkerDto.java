@@ -1,4 +1,4 @@
-package mediasoft.dto;
+package mediasoft.dto.worker;
 
 import lombok.Getter;
 
