@@ -30,10 +30,10 @@ public class Worker {
     private String otch;
     private String email;
 
-    @OneToMany(mappedBy = "worker", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "worker", fetch = FetchType.LAZY)
     private Set<Position> positions;
 
-    @OneToMany(mappedBy = "worker", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "worker", fetch = FetchType.LAZY)
     private Set<Skill> skills;
 
     @ManyToMany(mappedBy = "workers")
