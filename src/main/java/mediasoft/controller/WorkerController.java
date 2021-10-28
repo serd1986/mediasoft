@@ -6,6 +6,7 @@ import mediasoft.dto.worker.WorkerEditDto;
 import mediasoft.dto.worker.WorkerWithRolesDto;
 import mediasoft.dto.worker.filter.WorkerFilterDto;
 import mediasoft.service.WorkerService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,6 +42,15 @@ public class WorkerController {
     public WorkerDto editWorker(@RequestBody WorkerEditDto WorkerEditDto,
                                 @PathVariable("id") Integer WorkerId) {
         return workerService.editWorkerDto(WorkerId, WorkerEditDto);
+    }
+
+    @PreAuthorize("hasRole('admin')")
+    @PostMapping("/{email}/roles")
+    public void editRoles(@PathVariable String email,
+                          @RequestBody Collection<String> newRoleCodes) {
+        Integer workerId = workerService.getId(email);
+
+        workerService.editRole(workerId, newRoleCodes);
     }
 
     @GetMapping

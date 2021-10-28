@@ -16,6 +16,11 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@NamedEntityGraphs({
+        @NamedEntityGraph(name = "Worker.roles", attributeNodes = {
+                @NamedAttributeNode(value = "roles")
+        })
+})
 public class Worker {
 
     @Id
@@ -28,7 +33,10 @@ public class Worker {
     private String fam;
     private String im;
     private String otch;
+
     private String email;
+
+    private String password;
 
     @OneToMany(mappedBy = "worker", fetch = FetchType.LAZY)
     private Set<Position> positions;
@@ -48,10 +56,13 @@ public class Worker {
     public Worker() {
     }
 
-    public Worker(String fam, String im, String otch, String email) {
+    public Worker(String fam, String im, String otch, String email, String password, Set<Role>roles) {
         this.fam = fam;
         this.im = im;
         this.otch = otch;
         this.email = email;
+        this.password = password;
+        this.roles = roles;
+
     }
 }

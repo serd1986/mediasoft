@@ -12,13 +12,16 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface WorkerRepository  extends JpaRepository<Worker, Integer>, JpaSpecificationExecutor<Worker> {
+    public interface WorkerRepository  extends JpaRepository<Worker, Integer>, JpaSpecificationExecutor<Worker> {
 
     Optional<Worker> findByIm(String im);
 
     Optional<Worker> findByEmail(String email);
 
     WorkerIdProjection findOneByEmail(String email);
+
+    @EntityGraph("Worker.roles")
+    Optional<Worker> findOneWithRolesByEmail(String email);
 
     @EntityGraph("Worker.roles")
     @Query("select u from Worker u")

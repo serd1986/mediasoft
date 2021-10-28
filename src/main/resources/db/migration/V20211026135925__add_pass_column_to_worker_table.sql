@@ -1,0 +1,1 @@
+alter table working.worker add column password varchar not null default '';

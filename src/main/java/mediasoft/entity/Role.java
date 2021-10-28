@@ -22,6 +22,9 @@ private String code;
 @ManyToMany(mappedBy = "roles")
 private Set<Worker> workerSet;
 
+    public Role() {
+    }
+
     public Role(String code) {
         this.code = code;
     }
