@@ -1,4 +1,4 @@
-package mediasoft.dto;
+package mediasoft.dto.worker;
 
 import lombok.Getter;
 
@@ -10,17 +10,17 @@ public class WorkerDto {
     private final String fam;
     private final String im;
     private final String otch;
-    private final String text;
+    private final String email;
 
     public WorkerDto(Integer id,
-                    String fam,
-                    String im,
-                    String otch,
-                    String text) {
+                     String fam,
+                     String im,
+                     String otch,
+                     String email) {
         this.id = id;
         this.fam = fam;
         this.im = im;
         this.otch = otch;
-        this.text = text;
+        this.email = email;
     }
 }
