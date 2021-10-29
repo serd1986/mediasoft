@@ -93,7 +93,6 @@ fabric.properties
 .idea/codestream.xml
 
 ### Properties ###
-application.properties
 
 ### Java ###
 # Compiled class file
